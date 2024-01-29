@@ -15,7 +15,7 @@ spec:
   source:
     directory:
       include: >-
-        {all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/test-1706551002194/*.yaml,runtimes/test-1706551002194/**/*.yaml,control-planes/*.yaml,control-planes/**/*.yaml,jira-test-oauth-test/integration.config.yaml,jira-test-oauth-test/integration.secret.yaml}
+        {all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/test-1706551002194/*.yaml,runtimes/test-1706551002194/**/*.yaml,control-planes/*.yaml,control-planes/**/*.yaml}
       recurse: true
     path: shared-config/resources
     repoURL: https://github.com/testcodefresh/shared-config-repo-ingres-less.git

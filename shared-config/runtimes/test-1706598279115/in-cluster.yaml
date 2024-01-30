@@ -5,7 +5,7 @@ metadata:
     - resources-finalizer.argocd.argoproj.io
   labels:
     codefresh.io/entity: internal-config
-    codefresh.io/internal: "true"
+    codefresh.io/internal: 'true'
   name: in-cluster
 spec:
   destination:
@@ -14,7 +14,8 @@ spec:
   project: default
   source:
     directory:
-      include: '{all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/test-1706598279115/*.yaml,runtimes/test-1706598279115/**/*.yaml,control-planes/*.yaml,control-planes/**/*.yaml}'
+      include: >-
+        {all-runtimes-all-clusters/*.yaml,all-runtimes-all-clusters/**/*.yaml,runtimes/test-1706598279115/*.yaml,runtimes/test-1706598279115/**/*.yaml,control-planes/*.yaml,control-planes/**/*.yaml,jira-test-oauth-test/integration.config.yaml,jira-test-oauth-test/integration.secret.yaml}
       recurse: true
     path: shared-config/resources
     repoURL: https://github.com/testcodefresh/shared-config-repo-ingres-less.git
@@ -25,4 +26,4 @@ spec:
       prune: true
       selfHeal: true
     syncOptions:
-    - allowEmpty=true
+      - allowEmpty=true

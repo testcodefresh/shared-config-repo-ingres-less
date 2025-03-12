@@ -1,0 +1,31 @@
+apiVersion: codefresh.io/v1beta1
+kind: RestrictedGitSource
+metadata:
+  name: test-gs-restricted
+spec:
+  source:
+    repoURL: https://github.com/testcodefresh/test-1741797703490.git
+    path: .
+    targetRevision: main
+    directory:
+      include: '*'
+      exclude: ''
+      recurse: true
+  destinations:
+  - server: 'https://kubernetes.default.svc'
+    name: 'in-cluster'
+    namespace: 'test-gs-restricted'
+  clusterResourceWhitelist:
+  - group: ''
+    kind: Namespace
+  sourceRepos:
+  - '*test-gs-restricted'
+  sourceNamespace: 'cf-test-gs-restricted'
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true
+    syncOptions:
+    - allowEmpty=true
+    - CreateNamespace=true

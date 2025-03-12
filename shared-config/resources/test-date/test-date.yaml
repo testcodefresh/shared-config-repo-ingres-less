@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: test-date
+  labels:
+    codefresh.io/entity: runtime
+    codefresh.io/internal: 'true'
+spec:
+  project: default
+  source:
+    repoURL: https://github.com/testcodefresh/shared-config-repo-ingres-less.git
+    targetRevision: HEAD
+    path: shared-config/resources/test-date/chart
+    helm:
+      releaseName: test-date
+  destination:
+    namespace: test-date
+    server: https://kubernetes.default.svc
+  syncPolicy:
+    automated:
+      allowEmpty: true
+      prune: true
+      selfHeal: true

@@ -1,0 +1,38 @@
+gitops-runtime:
+  app-proxy:
+    env:
+      HELM_REPOSITORY: oci://quay.io/codefresh/dev/gitops-runtime
+    image:
+      repository: quay.io/codefresh/cap-app-proxy
+      tag: 1.3332.1
+  argo-cd:
+    enabled: false
+  global:
+    codefresh:
+      accountId: 636106283f85d103c9f0a793
+      userToken:
+        secretKeyRef:
+          name: codefresh-user-token
+          key: token
+    external-argo-cd:
+      redis:
+        port: 6379
+        svc: argocd-redis
+      repoServer:
+        port: 8081
+        svc: argocd-repo-server
+      server:
+        port: 80
+        protocol: http
+        svc: argocd-server
+    runtime:
+      ingress:
+        className: nginx-internal
+        enabled: true
+        hosts:
+          - test-date.rnd-sandbox.cf-infra.com
+        skipValidation: true
+      isConfigurationRuntime: true
+      name: test-date
+  installer:
+    skipValidation: true

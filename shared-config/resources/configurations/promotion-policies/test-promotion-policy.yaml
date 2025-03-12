@@ -1,0 +1,15 @@
+apiVersion: codefresh.io/v1beta1
+kind: PromotionPolicy
+metadata:
+  name: test-promotion-policy
+spec:
+  priority: 9999
+  selector:
+    product:
+      names:
+        - not-exist
+    targetEnvironment:
+      names:
+        - not-exist
+  policy:
+    action: commit

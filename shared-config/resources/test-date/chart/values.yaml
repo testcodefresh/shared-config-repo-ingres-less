@@ -27,10 +27,10 @@ gitops-runtime:
         svc: argocd-server
     runtime:
       ingress:
-        className: nginx-internal
+        className: nginx
         enabled: true
         hosts:
-          - test-date.rnd-sandbox.cf-infra.com
+          - vcluster-e2e-byo-argocd.non-prod.cf-infra.com
         skipValidation: true
       isConfigurationRuntime: true
       name: test-date
